@@ -28,3 +28,6 @@ fi
 # change shell
 sudo chsh -s /bin/zsh vagrant
 
+if [ ! -e '/home/vagrant/.vim/neobundle.vim' ]; then
+  curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
+fi
