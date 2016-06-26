@@ -1,0 +1,51 @@
+---
+- hosts: all
+  sudo: true
+  tasks:
+    # default packages      
+    - apt:
+        name: '{{ item }}'
+        state: present
+      with_items:
+        - git
+    # install docker    
+    - apt_repository:
+        repo: 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
+        state: present
+    - apt:
+        name: '{{ item }}'
+        state: present
+        update_cache: yes
+      with_items:
+        - apt-transport-https
+        - ca-certificates
+    - apt_key:
+        keyserver: hkp://p80.pool.sks-keyservers.net:80
+        id: 58118E89F3A912897C070ADBF76221572C52609D
+    - apt:
+        name: '{{ item }}'
+        state: present
+        update_cache: yes
+      with_items:
+        - docker-engine
+        - docker-compose
+    - user:
+        name: ubuntu
+        groups: docker
+        append: yes
+    # install Rust
+    - shell: curl -sSf https://static.rust-lang.org/rustup.sh | sh
+    - apt:
+        name: '{{ item }}'
+        state: present
+        update_cache: yes
+      with_items:
+        - iproute2
+        - libarchive-dev
+        - libprotobuf-dev
+        - libsodium-dev
+        - libssl-dev
+        - libczmq-dev
+        - pkg-config
+        
+
