@@ -1,8 +1,26 @@
 ---
-# default packages      
 - apt:
     name: '{{ item }}'
     state: present
   with_items:
     - git
+    - zsh
+    - tmux
+    - vim
+    - ruby
+    - homesick
 
+- shell: |
+    if [ ! -e ~/.zplug/zplug ]; then
+      curl -sL get.zplug.sh | zsh
+    fi
+  become_user: ubuntu
+
+- user:
+    name: ubuntu
+    shell: /bin/zsh
+
+- shell: |
+    homesick clone https://github.com/takaishi/dotfiles_castle.git
+    homesick link dotfiles_castle
+  become_user: ubuntu
