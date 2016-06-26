@@ -3,5 +3,6 @@
   sudo: true
   roles:
     - common
+    - git
     - docker
     - habitat

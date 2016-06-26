@@ -1,0 +1,6 @@
+- template:
+    src: gitconfig.j2
+    dest: ~/.gitconfig
+    owner: ubuntu
+    group: ubuntu
+  become_user: ubuntu
