@@ -1,0 +1,15 @@
+---
+- shell: curl -sSf https://static.rust-lang.org/rustup.sh | sh
+- apt:
+    name: '{{ item }}'
+    state: present
+    update_cache: yes
+  with_items:
+    - iproute2
+    - libarchive-dev
+    - libprotobuf-dev
+    - libsodium-dev
+    - libssl-dev
+    - libczmq-dev
+    - pkg-config
+        
