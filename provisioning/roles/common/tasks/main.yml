@@ -24,3 +24,6 @@
     homesick clone https://github.com/takaishi/dotfiles_castle.git
     homesick link dotfiles_castle
   become_user: ubuntu
+
+- include: vim.yml
+  tags: vim

@@ -1,0 +1,6 @@
+---
+- shell: curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > install.sh
+  become_user: ubuntu
+
+- shell: sh ./install.sh
+  become_user: ubuntu

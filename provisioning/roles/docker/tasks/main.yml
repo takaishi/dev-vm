@@ -23,3 +23,6 @@
     name: ubuntu
     groups: docker
     append: yes
+- name: docker-py install
+  pip:
+    name: docker-py

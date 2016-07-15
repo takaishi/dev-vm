@@ -12,4 +12,10 @@
     - libssl-dev
     - libczmq-dev
     - pkg-config
-        
+- shell: wget 'https://api.bintray.com/content/habitat/stable/linux/x86_64/hab-$latest-x86_64-linux.tar.gz?bt_package=hab-x86_64-linux' -O hab.tar.gz
+- shell: mkdir -p hab
+- shell: tar xvzf hab.tar.gz -C ./hab --strip-components 1
+- shell: mv hab/hab /usr/local/bin/hab
+- shell: chmod +x /usr/local/bin/hab
+- shell: useradd hab -u 42 -g 42 -d / -s /bin/sh -r
+- shell: groupadd -og 42 hab
