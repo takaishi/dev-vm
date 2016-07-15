@@ -43,7 +43,7 @@ git_config:
     contributors: shortlog -s -n
     filetrail: git log --follow -p -w
     mergetrail: log --ancestry-path --merges
-    unmerged: diff --name-only --diff-filter=U	
+    unmerged: "diff --name-only --diff-filter=U"
   pager:
     log: diff-highlight | less
     show: diff-highlight | less
